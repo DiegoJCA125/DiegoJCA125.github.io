@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diego Carmona — Portafolio de Data Engineering</title>
+    <meta name="description" content="Portafolio de Diego Carmona: proyectos de Data Engineering, automatización y desarrollo backend con Python.">
+
+    <!-- Dos familias de fuente, cada una con un rol distinto:
+         Space Grotesk para títulos y texto general, IBM Plex Mono
+         reservada SOLO para elementos técnicos (el stack, las
+         etiquetas de tecnología, la terminal) — así el mono se
+         siente "con propósito" y no decorativo. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="nav">
+        <a href="#top" class="nav__logo">DC</a>
+        <nav class="nav__links">
+            <a href="#proyectos">Proyectos</a>
+            <a href="#sobre-mi">Sobre mí</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- ============ HERO ============ -->
+        <!-- El "hero" es lo primero que ve cualquiera. En vez del
+             típico titular grande + gradiente decorativo, usamos
+             una ventana de terminal simulada — es honesto con quién
+             eres: la mayoría de tu trabajo real pasa por una terminal. -->
+        <section id="top" class="hero">
+            <div class="terminal" role="img" aria-label="Terminal mostrando la presentación de Diego Carmona">
+                <div class="terminal__barra">
+                    <span class="terminal__punto terminal__punto--rojo"></span>
+                    <span class="terminal__punto terminal__punto--amarillo"></span>
+                    <span class="terminal__punto terminal__punto--verde"></span>
+                    <span class="terminal__titulo">diego@portafolio: ~</span>
+                </div>
+                <!-- El contenido de adentro lo escribe script.js con un
+                     efecto de "tipeo" — por eso empieza vacío aquí y
+                     lo llenamos con JavaScript, no con texto fijo. -->
+                <div class="terminal__cuerpo" id="terminal-cuerpo"></div>
+            </div>
+        </section>
+
+        <!-- ============ SOBRE MÍ ============ -->
+        <section id="sobre-mi" class="seccion">
+            <h2 class="seccion__titulo">Sobre mí</h2>
+            <div class="sobre-mi">
+                <p class="sobre-mi__texto">
+                    Estudiante de Data Engineering construyendo un portafolio
+                    a base de proyectos reales, no ejercicios sueltos: desde
+                    una billetera personal conectada a una base de datos en
+                    la nube, hasta un bot que automatiza la búsqueda de
+                    empleo. Aprendo escribiendo código que uso yo mismo
+                    todos los días.
+                </p>
+
+                <!-- El stack como una lista estilo "requirements.txt" —
+                     un dispositivo visual con propósito real (así se ve
+                     un archivo de dependencias de verdad), no decoración. -->
+                <div class="stack">
+                    <div class="stack__encabezado">requirements.txt</div>
+                    <ul class="stack__lista">
+                        <li><span class="stack__nombre">python</span><span class="stack__version">&gt;=3.11</span></li>
+                        <li><span class="stack__nombre">flask</span></li>
+                        <li><span class="stack__nombre">postgresql</span></li>
+                        <li><span class="stack__nombre">sql</span></li>
+                        <li><span class="stack__nombre">pandas</span></li>
+                        <li><span class="stack__nombre">google-api-python-client</span></li>
+                        <li><span class="stack__nombre">requests</span></li>
+                        <li><span class="stack__nombre">git</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ PROYECTOS ============ -->
+        <section id="proyectos" class="seccion">
+            <h2 class="seccion__titulo">Proyectos</h2>
+            <p class="seccion__intro">
+                Cada uno resuelve algo que de verdad uso en mi día a día.
+            </p>
+
+            <!-- Este contenedor arranca VACÍO a propósito. script.js lo
+                 llena dinámicamente a partir de la lista de proyectos
+                 que vive en ese archivo — para agregar un proyecto
+                 nuevo, nunca vas a tener que tocar este HTML. -->
+            <div class="proyectos__grid" id="proyectos-grid"></div>
+        </section>
+
+        <!-- ============ CONTACTO ============ -->
+        <section id="contacto" class="seccion seccion--contacto">
+            <h2 class="seccion__titulo">Contacto</h2>
+            <p class="seccion__intro">¿Hablamos?</p>
+            <div class="contacto__links">
+                <a href="https://www.linkedin.com/in/diegojca125/" target="_blank" rel="noopener" class="boton">LinkedIn</a>
+                <a href="https://github.com/DiegoJCA125" target="_blank" rel="noopener" class="boton boton--secundario">GitHub</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Diego Carmona — construido con HTML, CSS y JavaScript puro.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

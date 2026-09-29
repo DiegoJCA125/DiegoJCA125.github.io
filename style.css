@@ -1,0 +1,437 @@
+/* ==========================================================
+   TOKENS DE DISEÑO
+   Variables CSS (custom properties): defines el valor UNA vez
+   aquí arriba, y lo usas en todo el archivo con var(--nombre).
+   Si mañana quieres cambiar el color de acento de todo el sitio,
+   cambias una sola línea aquí en vez de buscar en cientos de
+   lugares.
+   ========================================================== */
+:root {
+    /* Fondo y superficies */
+    --color-fondo: #0b0f14;
+    --color-superficie: #131920;
+    --color-borde: #232b33;
+
+    /* Texto */
+    --color-texto: #e8ecef;
+    --color-texto-secundario: #8b96a3;
+
+    /* Acento general del sitio: ámbar */
+    --color-acento: #ffb020;
+    --color-acento-suave: rgba(255, 176, 32, 0.12);
+
+    /* Acentos de proyectos — el mismo verde/azul de sus banners
+       de LinkedIn, pero aclarados un poco para que se lean bien
+       sobre un fondo oscuro (un verde muy oscuro sería invisible
+       aquí). */
+    --color-billetera: #66bb6a;
+    --color-empleo: #29b6f6;
+    --color-neutro: #9575cd;
+
+    /* Tipografía */
+    --fuente-titulos: "Space Grotesk", sans-serif;
+    --fuente-mono: "IBM Plex Mono", monospace;
+
+    /* Layout */
+    --ancho-maximo: 880px;
+}
+
+/* ==========================================================
+   BASE
+   ========================================================== */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    font-family: var(--fuente-titulos);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+    font-family: var(--fuente-titulos);
+    font-weight: 600;
+    line-height: 1.2;
+    margin: 0;
+}
+
+p {
+    margin: 0;
+}
+
+a {
+    color: inherit;
+}
+
+/* Un foco de teclado VISIBLE es un requisito de accesibilidad,
+   no un detalle opcional — alguien navegando con teclado necesita
+   ver claramente en qué elemento está parado. */
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--color-acento);
+    outline-offset: 3px;
+}
+
+/* Respeta a quien configuró su sistema para reducir animaciones
+   (por mareo, por preferencia, por accesibilidad). Sin esto, el
+   efecto de tipeo de la terminal correría igual para todos. */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.001ms !important;
+        transition-duration: 0.001ms !important;
+    }
+}
+
+/* ==========================================================
+   NAVEGACIÓN
+   ========================================================== */
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: var(--ancho-maximo);
+    margin: 0 auto;
+    padding: 28px 24px;
+}
+
+.nav__logo {
+    font-family: var(--fuente-mono);
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--color-texto);
+    border: 1px solid var(--color-borde);
+    padding: 6px 10px;
+    border-radius: 6px;
+}
+
+.nav__links {
+    display: flex;
+    gap: 28px;
+}
+
+.nav__links a {
+    text-decoration: none;
+    color: var(--color-texto-secundario);
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
+}
+
+.nav__links a:hover {
+    color: var(--color-texto);
+}
+
+/* ==========================================================
+   HERO / TERMINAL
+   ========================================================== */
+.hero {
+    max-width: var(--ancho-maximo);
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+}
+
+.terminal {
+    background-color: var(--color-superficie);
+    border: 1px solid var(--color-borde);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+.terminal__barra {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    background-color: #171e26;
+    border-bottom: 1px solid var(--color-borde);
+}
+
+.terminal__punto {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+}
+
+.terminal__punto--rojo { background-color: #ff5f56; }
+.terminal__punto--amarillo { background-color: #ffbd2e; }
+.terminal__punto--verde { background-color: #27c93f; }
+
+.terminal__titulo {
+    margin-left: 8px;
+    font-family: var(--fuente-mono);
+    font-size: 0.8rem;
+    color: var(--color-texto-secundario);
+}
+
+.terminal__cuerpo {
+    padding: 28px 24px 40px;
+    font-family: var(--fuente-mono);
+    font-size: 1.05rem;
+    min-height: 180px;
+    white-space: pre-wrap;
+}
+
+/* El cursor parpadeante al final del texto que se está "tipeando" */
+.terminal__cursor {
+    display: inline-block;
+    width: 9px;
+    height: 1.1em;
+    background-color: var(--color-acento);
+    vertical-align: text-bottom;
+    animation: parpadeo 1s steps(1) infinite;
+}
+
+@keyframes parpadeo {
+    50% { opacity: 0; }
+}
+
+/* ==========================================================
+   SECCIONES GENERALES
+   ========================================================== */
+.seccion {
+    max-width: var(--ancho-maximo);
+    margin: 0 auto;
+    padding: 60px 24px;
+    border-top: 1px solid var(--color-borde);
+}
+
+.seccion__titulo {
+    font-size: 1.8rem;
+}
+
+.seccion__intro {
+    color: var(--color-texto-secundario);
+    margin-top: 8px;
+    max-width: 60ch;
+}
+
+/* ==========================================================
+   SOBRE MÍ
+   ========================================================== */
+.sobre-mi {
+    margin-top: 32px;
+    display: grid;
+    gap: 32px;
+}
+
+.sobre-mi__texto {
+    max-width: 65ch;
+    color: var(--color-texto-secundario);
+    font-size: 1.05rem;
+}
+
+.stack {
+    background-color: var(--color-superficie);
+    border: 1px solid var(--color-borde);
+    border-radius: 10px;
+    overflow: hidden;
+    max-width: 420px;
+}
+
+.stack__encabezado {
+    font-family: var(--fuente-mono);
+    font-size: 0.8rem;
+    color: var(--color-texto-secundario);
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--color-borde);
+}
+
+.stack__lista {
+    list-style: none;
+    margin: 0;
+    padding: 12px 16px;
+    font-family: var(--fuente-mono);
+    font-size: 0.9rem;
+}
+
+.stack__lista li {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 0;
+}
+
+.stack__nombre {
+    color: var(--color-texto);
+}
+
+.stack__version {
+    color: var(--color-acento);
+}
+
+/* ==========================================================
+   PROYECTOS
+   ========================================================== */
+.proyectos__grid {
+    margin-top: 32px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+/* Cada tarjeta de proyecto. El color de acento de CADA proyecto
+   se aplica vía una variable CSS inline (--acento-proyecto), que
+   script.js define al crear la tarjeta — así el CSS no necesita
+   saber de antemano cuántos proyectos ni de qué color son. */
+.proyecto {
+    background-color: var(--color-superficie);
+    border: 1px solid var(--color-borde);
+    border-left: 3px solid var(--acento-proyecto, var(--color-acento));
+    border-radius: 10px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.proyecto:hover {
+    transform: translateY(-4px);
+}
+
+.proyecto__encabezado {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.proyecto__nombre {
+    font-size: 1.2rem;
+}
+
+.proyecto__estado {
+    font-family: var(--fuente-mono);
+    font-size: 0.7rem;
+    color: var(--acento-proyecto, var(--color-acento));
+    border: 1px solid var(--acento-proyecto, var(--color-acento));
+    border-radius: 20px;
+    padding: 3px 10px;
+    white-space: nowrap;
+}
+
+.proyecto__descripcion {
+    color: var(--color-texto-secundario);
+    font-size: 0.95rem;
+    flex-grow: 1;
+}
+
+.proyecto__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.proyecto__tag {
+    font-family: var(--fuente-mono);
+    font-size: 0.72rem;
+    color: var(--color-texto-secundario);
+    background-color: var(--color-fondo);
+    border: 1px solid var(--color-borde);
+    padding: 3px 8px;
+    border-radius: 4px;
+}
+
+.proyecto__links {
+    display: flex;
+    gap: 16px;
+    margin-top: 4px;
+}
+
+.proyecto__links a {
+    font-size: 0.9rem;
+    text-decoration: none;
+    color: var(--color-texto);
+    border-bottom: 1px solid var(--color-borde);
+    padding-bottom: 2px;
+    transition: border-color 0.2s ease;
+}
+
+.proyecto__links a:hover {
+    border-color: var(--acento-proyecto, var(--color-acento));
+}
+
+/* ==========================================================
+   CONTACTO
+   ========================================================== */
+/* Esta sección sí va centrada — es corta (título, una frase, dos
+   botones) y funciona como cierre visual de la página. El resto
+   del sitio se queda alineado a la izquierda porque tiene texto
+   más largo, donde centrar dificultaría la lectura. */
+.seccion--contacto {
+    text-align: center;
+}
+
+.seccion--contacto .seccion__intro {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contacto__links {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 28px;
+}
+
+.boton {
+    display: inline-block;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 12px 24px;
+    border-radius: 8px;
+    background-color: var(--color-acento);
+    color: #0b0f14;
+    transition: opacity 0.2s ease;
+}
+
+.boton--secundario {
+    background-color: transparent;
+    border: 1px solid var(--color-borde);
+    color: var(--color-texto);
+}
+
+.boton:hover {
+    opacity: 0.85;
+}
+
+/* ==========================================================
+   FOOTER
+   ========================================================== */
+.footer {
+    max-width: var(--ancho-maximo);
+    margin: 0 auto;
+    padding: 24px;
+    color: var(--color-texto-secundario);
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+/* ==========================================================
+   RESPONSIVE — celular
+   ========================================================== */
+@media (max-width: 640px) {
+    .nav__links {
+        gap: 16px;
+    }
+
+    .terminal__cuerpo {
+        font-size: 0.9rem;
+        padding: 20px 16px 32px;
+    }
+
+    .proyectos__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .sobre-mi {
+        grid-template-columns: 1fr;
+    }
+}
