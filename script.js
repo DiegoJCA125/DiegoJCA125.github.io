@@ -54,6 +54,19 @@ const PROYECTOS = [
         github: "https://github.com/DiegoJCA125/Portafolio-DataEngineering",
         demo: null,
     },
+    {
+        // Nuevo proyecto agregado el 21/10/2026
+        nombre: "ETL de Ventas con Power BI",
+        estado: "Completado",
+        descripcion:
+            "Pipeline ETL desarrollado con Python y Pandas para generar, " +
+            "limpiar y transformar datos de ventas. Incluye pruebas y " +
+            "un dashboard en Power BI para visualizar indicadores.",
+        tecnologias: ["Python", "Pandas", "ETL", "Power BI", "Git"],
+        acento: "var(--color-neutro)",
+        github: "https://github.com/DiegoJCA125/ETL_Ventas_PowerBI",
+        demo: null, // No tenemos una demo web independiente
+    },
 
     // 👇 Para agregar un proyecto nuevo, copia esto y complétalo:
     //
