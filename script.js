@@ -65,7 +65,7 @@ const PROYECTOS = [
         tecnologias: ["Python", "Pandas", "ETL", "Power BI", "Git"],
         acento: "var(--color-neutro)",
         github: "https://github.com/DiegoJCA125/ETL_Ventas_PowerBI",
-        demo: null, // No tenemos una demo web independiente
+        demo: null,
     },
 
     // 👇 Para agregar un proyecto nuevo, copia esto y complétalo:
